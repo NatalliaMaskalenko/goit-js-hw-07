@@ -13,25 +13,13 @@ const images = [
   },
 ];
 
-const listEl = document.querySelector('#gallery');
-
-const creatElements = function (array) {
-    const arrayElements = [];
-
-    array.map(element => {
-        const creatList = document.createElement('li');
-        creatList.classList.add('gallery__item');
-        const creatImeges = document.createElement('img');
-        creatList.appendChild(creatImeges);
-        creatImeges.src = element.url;
-        creatImeges.alt = element.alt;
-          
-        arrayElements.push(creatList);
-
-    })
-
-    return listEl.append(...arrayElements);
-
-};
-
-creatElements(images);
+ const listEl = document.querySelector('#gallery');
+ 
+  images.forEach(image => {
+    listEl.insertAdjacentHTML('afterbegin', `<li>
+  <img src = ${image.url}
+   alt = ${image.alt}
+   width = "640">
+   </li >`);
+            
+  });
